@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta Restaurante</title>
+  <link rel="stylesheet" href="../static/css/menu_white_blue.css">
+  <script defer src="../static/js/menu.js"></script>
+  
+</head>
+<body>
+  <!-- ====== FONDO ====== -->
+  <div class="menu-img">
+    
+    <!-- ====== NOMBRE DEL RESTAURANTE ====== -->
+    <div class="logo">
+      <h1>Erase Una Vez</h1>
+      <h2>Carta</h2>
+    </div>
+
+    <!-- ====== CHECKBOX DE ALERGIAS ====== -->
+    <!-- ====== CHECKBOX DE ALERGIAS ====== -->
+    <div class="select_alerg">
+
+      <div class="alergia-titulo">
+        <p style="width:100%; text-align:center; color: #1a4b5c; cursor: pointer;">Selecciona alergias: ⬇️</p>
+      </div>
+
+      <div class="alergia-contenido">
+        <label>
+          <input type="checkbox" value="gluten" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/gluten.png" alt="gluten">
+            <span>Gluten</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="huevo" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/egg.png" alt="Huevo">
+            <span>Huevos</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="pescado" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/pescado.png" alt="Pescado">
+            <span>Pescado</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="lactosa" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/lacteos.png" alt="Lactosa">
+            <span>Lactosa</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="cacahuetes" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/cacahuetes.png" alt="Cacahuetes">
+            <span>Cacahuetes</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="soja" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/soja.png" alt="Soja">
+            <span>Soja</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="crustáceos" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/crustaceos.png" alt="Crustaceos">
+            <span>Crustaceos</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="frtutos secos" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/frutosSecos.png" alt="Frutos de Cascara">
+            <span>Frutos de Cascara</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="apio" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/apio.png" alt="Apio">
+            <span>Apio</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="mostaza" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/mostaza.png" alt="Mostaza">
+            <span>Mostaza</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="sesamo" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/sesamo.png" alt="Granos de Sesamo">
+            <span>Granos de Sesamo</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="sulfitos" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/sulfitos.png" alt="Dióxido de Azufre y Sulfitos">
+            <span>Dióxido de Azufre y Sulfitos</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="marisco" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/marisco.png" alt="Moluscos">
+            <span>Moluscos</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="altramuces" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/altramuces.png" alt="Altramuces">
+            <span>Altramuces</span>
+          </div>
+        </label>
+
+      </div>
+    </div>
+
+    
+        <fieldset>
+            <legend>Entrantes</legend>
+            <div class="containerPlatos">
+                
+        <div class="plato destacado" data-alergenos="apio">
+            <div class="titulo">Ensalada de Quinoa</div>
+            <div class="precio">10.5 €</div>
+            <div class="descripcion">Quinoa, aguacate, tomate cherry, aceite</div>
+            <div class="alergenos">
+                <img src="../../static/icons/apio.png" alt="Apio" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="pescado">
+            <div class="titulo">Croquetas de Jamón</div>
+            <div class="precio">7.9 €</div>
+            <div class="descripcion">Jamón, leche, harina, huevo</div>
+            <div class="alergenos">
+                <img src="../../static/icons/pescado.png" alt="Pescado" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="apio">
+            <div class="titulo">Ensalada de Quinoa</div>
+            <div class="precio">10.5 €</div>
+            <div class="descripcion">Quinoa, aguacate, tomate cherry, aceite</div>
+            <div class="alergenos">
+                <img src="../../static/icons/apio.png" alt="Apio" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="pescado">
+            <div class="titulo">Croquetas de Jamón</div>
+            <div class="precio">7.9 €</div>
+            <div class="descripcion">Jamón, leche, harina, huevo</div>
+            <div class="alergenos">
+                <img src="../../static/icons/pescado.png" alt="Pescado" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="apio">
+            <div class="titulo">Ensalada de Quinoa</div>
+            <div class="precio">10.5 €</div>
+            <div class="descripcion">Quinoa, aguacate, tomate cherry, aceite</div>
+            <div class="alergenos">
+                <img src="../../static/icons/apio.png" alt="Apio" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="pescado">
+            <div class="titulo">Croquetas de Jamón</div>
+            <div class="precio">7.9 €</div>
+            <div class="descripcion">Jamón, leche, harina, huevo</div>
+            <div class="alergenos">
+                <img src="../../static/icons/pescado.png" alt="Pescado" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+            </div>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Principales</legend>
+            <div class="containerPlatos">
+                
+        <div class="plato destacado" data-alergenos="cacahuetes">
+            <div class="titulo">Paella de Marisco</div>
+            <div class="precio">19.5 €</div>
+            <div class="descripcion">Arroz, azafrán, mejillones, gambas</div>
+            <div class="alergenos">
+                <img src="../../static/icons/cacahuetes.png" alt="Cacahuetes" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="mostaza">
+            <div class="titulo">Solomillo a la Pimienta</div>
+            <div class="precio">24.9 €</div>
+            <div class="descripcion">Solomillo, salsa de pimienta, patatas</div>
+            <div class="alergenos">
+                <img src="../../static/icons/mostaza.png" alt="Mostaza" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="cacahuetes">
+            <div class="titulo">Paella de Marisco</div>
+            <div class="precio">19.5 €</div>
+            <div class="descripcion">Arroz, azafrán, mejillones, gambas</div>
+            <div class="alergenos">
+                <img src="../../static/icons/cacahuetes.png" alt="Cacahuetes" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="mostaza,         pescado">
+            <div class="titulo">Solomillo a la Pimienta</div>
+            <div class="precio">24.9 €</div>
+            <div class="descripcion">Solomillo, salsa de pimienta, patatas</div>
+            <div class="alergenos">
+                <img src="../../static/icons/pescado.png" alt="Pescado" class="icono-alergeno"><img src="../../static/icons/mostaza.png" alt="Mostaza" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="cacahuetes">
+            <div class="titulo">Paella de Marisco</div>
+            <div class="precio">19.5 €</div>
+            <div class="descripcion">Arroz, azafrán, mejillones, gambas</div>
+            <div class="alergenos">
+                <img src="../../static/icons/cacahuetes.png" alt="Cacahuetes" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="mostaza">
+            <div class="titulo">Solomillo a la Pimienta</div>
+            <div class="precio">24.9 €</div>
+            <div class="descripcion">Solomillo, salsa de pimienta, patatas</div>
+            <div class="alergenos">
+                <img src="../../static/icons/mostaza.png" alt="Mostaza" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+            </div>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Postres</legend>
+            <div class="containerPlatos">
+                
+        <div class="plato destacado" data-alergenos="lactosa">
+            <div class="titulo">Tarta de Chocolate</div>
+            <div class="precio">6.5 €</div>
+            <div class="descripcion">Cacao, nata, azúcar, huevo</div>
+            <div class="alergenos">
+                <img src="../../static/icons/lacteos.png" alt="Lactosa" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="altramuces">
+            <div class="titulo">Helado de Pistacho</div>
+            <div class="precio">5.0 €</div>
+            <div class="descripcion">Leche, azúcar, pistachos</div>
+            <div class="alergenos">
+                <img src="../../static/icons/altramuces.png" alt="Altramuces" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="lactosa">
+            <div class="titulo">Tarta de Chocolate</div>
+            <div class="precio">6.5 €</div>
+            <div class="descripcion">Cacao, nata, azúcar, huevo</div>
+            <div class="alergenos">
+                <img src="../../static/icons/lacteos.png" alt="Lactosa" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="altramuces">
+            <div class="titulo">Helado de Pistacho</div>
+            <div class="precio">5.0 €</div>
+            <div class="descripcion">Leche, azúcar, pistachos</div>
+            <div class="alergenos">
+                <img src="../../static/icons/altramuces.png" alt="Altramuces" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="lactosa">
+            <div class="titulo">Tarta de Chocolate</div>
+            <div class="precio">6.5 €</div>
+            <div class="descripcion">Cacao, nata, azúcar, huevo</div>
+            <div class="alergenos">
+                <img src="../../static/icons/lacteos.png" alt="Lactosa" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="altramuces">
+            <div class="titulo">Helado de Pistacho</div>
+            <div class="precio">5.0 €</div>
+            <div class="descripcion">Leche, azúcar, pistachos</div>
+            <div class="alergenos">
+                <img src="../../static/icons/altramuces.png" alt="Altramuces" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+            </div>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Especiales</legend>
+            <div class="containerPlatos">
+                
+        <div class="plato destacado" data-alergenos="lactosa">
+            <div class="titulo">Pan Sin Gluten</div>
+            <div class="precio">4.0 €</div>
+            <div class="descripcion">Harina de arroz, levadura, agua</div>
+            <div class="alergenos">
+                <img src="../../static/icons/lacteos.png" alt="Lactosa" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="pescado huevo apio">
+            <div class="titulo">Wrap de Pollo y Sésamo</div>
+            <div class="precio">12.0 €</div>
+            <div class="descripcion">Tortilla, pollo, salsa de sésamo</div>
+            <div class="alergenos">
+                <img src="../../static/icons/egg.png" alt="Huevo" class="icono-alergeno"><img src="../../static/icons/pescado.png" alt="Pescado" class="icono-alergeno"><img src="../../static/icons/apio.png" alt="Apio" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="lactosa">
+            <div class="titulo">Pan Sin Gluten</div>
+            <div class="precio">4.0 €</div>
+            <div class="descripcion">Harina de arroz, levadura, agua</div>
+            <div class="alergenos">
+                <img src="../../static/icons/lacteos.png" alt="Lactosa" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="pescado,, huevo,, apio">
+            <div class="titulo">Wrap de Pollo y Sésamo</div>
+            <div class="precio">12.0 €</div>
+            <div class="descripcion">Tortilla, pollo, salsa de sésamo</div>
+            <div class="alergenos">
+                <img src="../../static/icons/egg.png" alt="Huevo" class="icono-alergeno"><img src="../../static/icons/pescado.png" alt="Pescado" class="icono-alergeno"><img src="../../static/icons/apio.png" alt="Apio" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="leche">
+            <div class="titulo">Pan Sin Gluten</div>
+            <div class="precio">4.0 €</div>
+            <div class="descripcion">Harina de arroz, levadura, agua</div>
+            <div class="alergenos">
+                
+            </div>
+        </div>
+
+        
+        <div class="plato destacado" data-alergenos="pescado, huevo, apio">
+            <div class="titulo">Wrap de Pollo y Sésamo</div>
+            <div class="precio">12.0 €</div>
+            <div class="descripcion">Tortilla, pollo, salsa de sésamo</div>
+            <div class="alergenos">
+                <img src="../../static/icons/egg.png" alt="Huevo" class="icono-alergeno"><img src="../../static/icons/pescado.png" alt="Pescado" class="icono-alergeno"><img src="../../static/icons/apio.png" alt="Apio" class="icono-alergeno">
+            </div>
+        </div>
+
+        
+            </div>
+        </fieldset>
+        
+
+  </div>
+
+  
+</body>
+</html>
