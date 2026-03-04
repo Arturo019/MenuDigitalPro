@@ -2,4 +2,6 @@ pandas
 qrcode
 flask
 openpyxl
+python-dotenv
+gunicorn
 
