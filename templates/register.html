@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Form</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            font-family: sans-serif;
+            overflow: hidden;
+            background-image: url('/static/media/untitled_project_remix.png'); 
+            background-size: cover;          
+            background-position: center;     
+            background-repeat: no-repeat;    
+            background-color: #000;          
+        }
+
+        .menu{
+            text-align: center;
+            margin-bottom: 4rem;
+            margin-top: 2.5rem;
+            
+            animation: menuDrop 0.9s ease-out forwards;
+
+            
+            
+        }
+
+        @keyframes menuDrop {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px);
+        filter: blur(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+        .menu h1 { 
+    font-family: 'Playfair Display', serif; 
+    color: #b8860b; 
+    font-size: 7vh; 
+    font-weight: 700; 
+    margin-bottom: 0.5vh; 
+    text-shadow: 0 0 2px rgb(0, 0, 0); 
+    transition: all 0.3s ease-in-out;
+
+
+}
+    .menu h1:hover{
+        text-shadow: 0 0 6px rgb(72, 52, 0); 
+        transition: all 0.3s ease-in-out;
+
+
+
+    }
+
+    .menu p{
+        font-family: 'Playfair Display', serif; 
+        text-align: center;
+    color: #b8860b; 
+    font-size: 4vh; 
+    font-weight: 700; 
+    margin-bottom: 0.5vh; 
+    text-shadow: 0 0 8px rgb(46, 33, 0); 
+    }
+
+        /* ESTILOS DEL FONDO DE VIDEO */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Esto lo envía detrás de todo */
+            pointer-events: none; /* Asegura que puedas hacer clic en el form aunque el video esté ahí */
+            }
+
+        /* Estilos del Formulario */
+        .form {
+            margin-right: 0;
+            height: auto; 
+            width: 42vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+            border-radius: 10px;
+            border: 1px solid #b8870b38 ;
+            overflow: hidden;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            transform: rotateX(-10deg);
+            transition: all 0.3s ease-in-out;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            animation: form-animation 0.5s ease-in-out;
+            background-color: rgba(120, 120, 120, 0.115);
+            z-index: 10;
+            /*backdrop-filter: blur(3px);*/
+        
+
+        }
+    
+        @keyframes form-animation {
+            from { transform: rotateX(-30deg); opacity: 0; }
+            to { transform: rotateX(0deg); opacity: 1; }
+        }
+
+        
+        
+        form p{
+            text-align: center;
+
+            background-color: #2a2a2a9a;
+            padding: 1.2vh;
+            color: white;
+            border-radius: 5px;
+            text-shadow: 0 0 2px #000;
+            box-shadow: inset 0 0 6px -2px rgba(0, 0, 0, 0.3),0 0 2px rgba(255, 255, 255, 0.16);
+        }
+
+        form a{
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .login{
+            background-color: #b8870b57 !important;
+
+        }
+
+        .login:hover{
+            background-color:#feb90c98 !important;
+        }
+
+        
+    
+        .input {
+            width: 90%;
+            height: 3vh;
+            padding: 10px;
+            border-radius: 5px;
+            border-color: #b8870b38;
+
+            background-color: #2a2a2abc;
+            transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            color: rgb(255, 255, 255);
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+    
+        .input::placeholder { color: #fff; }
+    
+        .input:hover, .input:focus {
+            border-color: #b8870bd2;
+            background-color: rgba(149, 149, 149, 0.2);
+            transform: scale(1.05) rotateY(20deg);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+            outline: none;
+        }
+    
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #b8870bd2;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            transform: rotateX(-10deg);
+            transition: all 0.3s ease-in-out;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            margin-top: 10px;
+        }
+    
+        button:hover {
+            background-color: rgba(255, 183, 0, 0.775);
+            font-size: 17px;
+            transform: scale(1.05) rotateY(20deg) rotateX(10deg);
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+    
+
+
+        
+    </style>
+</head>
+
+<body>
+<!--    <div class="video-background">
+        <div data-us-project="uUYEVmGrqofwEJaXGwnc" style="width: 100vw; height: 100vh;"></div>  
+    </div>
+
+    <script type="text/javascript">!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.36/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();</script>
+-->
+    <div class="menu">
+        <h1>Menu Digital Pro</h1>
+        <p>Registro</p>
+    </div>
+            <form class="form" id="registerForm">
+                <p>Registrate</p>
+                <input id="regName" placeholder="Enter your name" class="input" type="text">
+                <input id="regEmail" placeholder="Enter your email" class="input" type="text">
+                <input id="regPassword" placeholder="*********" class="input" type="password">
+                <button type="submit">Registrarse</button>
+                <button type="button" class="login"><a href="login">Login</a></button>
+
+            </form>
+
+            <script type="module">
+                import { supabase } from '/static/js/supabaseClient.js';
+                
+                const registerForm = document.getElementById('registerForm');
+                registerForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('regEmail').value; 
+                    const password = document.getElementById('regPassword').value;
+            
+                    const { data, error } = await supabase.auth.signUp({
+                        name,
+                        email,
+                        password,
+                    });
+            
+                    if (error) {
+                        alert("Error: " + error.message);
+                    } else {
+                        alert("Registro con éxito. Revisa tu email para confirmar.");
+                    }
+                });
+            </script>
+        
+</body>
+</html>

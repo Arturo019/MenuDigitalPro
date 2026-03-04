@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Cartas Digitales | Hostelería</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inicio.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fondoPant.css') }}">
+
+</head>
+
+<body>
+  <script type="module">
+    import { checkAuth } from '/static/js/authCheck.js';
+    checkAuth();
+  </script>
+<!--
+<div class="video-background">
+  <div data-us-project="uUYEVmGrqofwEJaXGwnc" style="width:100%; height:100vh;"></div>  
+</div>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+<script type="text/javascript">
+  !function(){
+    if(!window.UnicornStudio){
+      window.UnicornStudio={isInitialized:!1};
+      var i=document.createElement("script");
+      i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.36/dist/unicornStudio.umd.js";
+      // Añade estas dos líneas para mejorar el rendimiento
+      i.defer=true; 
+      i.async=true; 
+      
+      i.onload = function() {
+      setTimeout(function() { // Retrasa la ejecución 2 segundos
+       if(!window.UnicornStudio.isInitialized){
+        UnicornStudio.init();
+         window.UnicornStudio.isInitialized=!0;
+    }
+  }, 2000); 
+};
+      (document.head || document.body).appendChild(i);
+    }
+  }();
+</script>  
+-->
+  <!-- Menú desplegable -->
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <nav class="sidebar-menu" id="sidebarMenu">
+    <div class="menu-content">
+      <div class="menu-header">
+        <h3>Menú</h3>
+        <button class="close-menu" id="closeMenu">&times;</button>
+      </div>
+      <ul class="menu-list">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="#subirCarta">Subir Carta</a></li>
+        <li><a href="#exposition">Ejemplos</a></li>
+        <li><a href="/mis_cartas">Mis Cartas</a></li>
+        <li><a href="/logout">Cerrar Sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="header-content">
+        <div class="menu">
+            <h1>Menu Digital Pro</h1>
+        </div>
+
+        <div class="descripcion">
+            <h2>Transforma tu carta en una experiencia digital de alta calidad</h2>
+        </div>
+
+        <div class="descripcion2">
+            <h3>
+                Diseñado para la hostelería moderna. Sube tu carta (Excel o XML) y genera un menú interactivo con código QR, destacando alérgenos y opciones para tus clientes.
+            </h3>
+        </div>
+
+      
+    </div>
+
+    <div class="subirCarta" id="subirCarta">
+        <h3>Proceso Rápido: Archivo y Diseño</h3>
+        <p class="instrucciones-clave">
+          Paso 1: Descarga nuestra plantilla estandarizada a continuación.
+          <br>
+          Paso 2: Rellénala siguiendo las guías de alérgenos y sube el archivo.
+        </p>
+
+
+        <a href="{{ url_for('static', filename='ExcelFinal.xlsx') }}" download="ExcelFinal.xlsx" class="button_1 download-button">
+          <span class="button__text">Download</span>
+          <span class="button__icon"><svg class="svg" data-name="Layer 2" id="bdd05811-e15d-428c-bb53-8661459f9307" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
+        </a>
+
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+            
+            <label for="file-upload">Sube tu Archivo (.xlsx) [Debe ser el de la plantilla una vez ya rellenado]</label>
+            <input type="file" name="xmlfile" id="file-upload" accept=".xlsx" required>
+            <input type="hidden" name="user_id" id="hidden_user_id" value="">
+            
+            <label for="color_selector" style="margin-top: 20px;">Selecciona la Estética de tu Plantilla</label>
+              <div class="color-selector-container">
+                <div class="glass-radio-group">
+                    <input type="radio" name="template_color" id="glass-blue" value="blue" checked />
+                    <label for="glass-blue">Azul Moderno</label>
+                
+                    <input type="radio" name="template_color" id="glass-brown" value="brown_white" />
+                    <label for="glass-brown">Clásico</label>
+                
+                    <input type="radio" name="template_color" id="glass-green" value="green" />
+                    <label for="glass-green">Fresco</label>
+                
+                    <input type="radio" name="template_color" id="glass-white-blue" value="white_blue" />
+                    <label for="glass-white-blue">Minimalista</label>
+                
+                    <div class="glass-glider"></div>
+                </div>
+              </div>
+            
+            <button type="submit">Generar y Previsualizar Carta</button>
+        </form>
+    </div>
+
+    <div class="exposition">
+      <div class="expo_descrip">
+        <p>Estos son algunos de nuestros ejemplos</p>
+      </div>
+      <div class="containerCard">
+          <div class="card">
+            <iframe 
+              src="../output/carta_generada_blue.html" 
+              width="100%" 
+              height="300px" 
+              frameborder="0" 
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div class="card">
+            <iframe 
+              src="../output/carta_generada_brown_white.html" 
+              width="100%" 
+              height="300px" 
+              frameborder="0" 
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div class="card">
+            <iframe 
+              src="../output/carta_generada_white_blue.html" 
+              width="100%" 
+              height="300px" 
+              frameborder="0" 
+              allowfullscreen>
+            </iframe>
+          </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/inicio.js') }}"></script>
+    
+    <script type="module">
+      import { supabase } from '/static/js/supabaseClient.js';
+ 
+      // Cuando cargue la página, buscamos al usuario y lo metemos en el formulario
+      async function setUserIdParaFormulario() {
+          const { data: { user } } = await supabase.auth.getUser();
+          if (user) {
+              document.getElementById('hidden_user_id').value = user.id;
+          }
+      }
+      setUserIdParaFormulario();
+  </script>
+</body>
+  
+</html>

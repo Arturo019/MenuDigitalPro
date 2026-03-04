@@ -1,0 +1,45 @@
+/* Asegura que el contenido esté por encima del video */
+.content {
+    position: relative;
+    z-index: 3; /* Mayor que el video (z-index: 1) */
+    color: white; /* Color para que el texto se vea bien sobre el video */
+    /* Ajusta padding o márgenes según necesites */
+  }
+  
+  /* 1. Contenedor principal para posicionamiento */
+  .video-background {
+    position: fixed; /* Fijo para que ocupe toda la ventana */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden; /* Oculta partes del video que se salgan */
+    z-index: 1; /* Asegura que el video esté detrás del contenido */
+    background: black; /* Color de fondo si el video tarda en cargar */
+  }
+  
+  /* 2. Estilos del video */
+  .video-background video {
+    /* Estas propiedades son CLAVE para que ocupe toda la pantalla sin distorsionarse */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100; /* Opción alternativa a z-index: 1 del contenedor */
+    transform: translate(-50%, -50%); /* Centra el video */
+    object-fit: cover; /* Asegura que el video cubra toda el área */
+  }
+  
+  /* 3. Oscurecer el video para mejorar la legibilidad del texto */
+  .video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Por encima del video, pero debajo del contenido */
+  }

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta Restaurante</title>
+  <link rel="stylesheet" href="../static/css/menu_green.css">
+  <script defer src="../static/js/menu.js"></script>
+  
+</head>
+<body>
+  <!-- ====== FONDO ====== -->
+  <div class="menu-img">
+    
+    <!-- ====== NOMBRE DEL RESTAURANTE ====== -->
+    <div class="logo">
+      <h1>{{Nombre Restaurante}}</h1>
+      <h2>Carta</h2>
+    </div>
+
+    <!-- ====== CHECKBOX DE ALERGIAS ====== -->
+    <div class="select_alerg">
+
+      <div class="alergia-titulo">
+        <p style="width:100%; text-align:center; color: #eda200; cursor: pointer;">Selecciona alergias: ⬇️</p>
+      </div>
+
+      <div class="alergia-contenido">
+        <label>
+          <input type="checkbox" value="gluten" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/gluten.png" alt="gluten">
+            <span>Gluten</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="huevo" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/egg.png" alt="Huevo">
+            <span>Huevos</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="pescado" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/pescado.png" alt="Pescado">
+            <span>Pescado</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="lactosa" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/lacteos.png" alt="Lactosa">
+            <span>Lactosa</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="cacahuetes" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/cacahuetes.png" alt="Cacahuetes">
+            <span>Cacahuetes</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="soja" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/soja.png" alt="Soja">
+            <span>Soja</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="crustáceos" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/crustaceos.png" alt="Crustaceos">
+            <span>Crustaceos</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="frtutos secos" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/frutosSecos.png" alt="Frutos de Cascara">
+            <span>Frutos de Cascara</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="apio" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/apio.png" alt="Apio">
+            <span>Apio</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="mostaza" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/mostaza.png" alt="Mostaza">
+            <span>Mostaza</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="sesamo" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/sesamo.png" alt="Granos de Sesamo">
+            <span>Granos de Sesamo</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="sulfitos" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/sulfitos.png" alt="Dióxido de Azufre y Sulfitos">
+            <span>Dióxido de Azufre y Sulfitos</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="marisco" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/marisco.png" alt="Moluscos">
+            <span>Moluscos</span>
+          </div>
+        </label>
+        <label>
+          <input type="checkbox" value="altramuces" class="alergia">
+          <div class="alergia-icon">
+            <img src="../static/icons/altramuces.png" alt="Altramuces">
+            <span>Altramuces</span>
+          </div>
+        </label>
+
+      </div>
+    </div>
+
+    <!-- {{FIELDSETS_PLATOS}} -->
+
+  </div>
+
+  
+</body>
+</html>

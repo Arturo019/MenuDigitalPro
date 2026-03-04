@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Cartas | Menu Digital Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inicio.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fondoPant.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mis_cartas.css') }}">
+</head>
+<body>
+  <script type="module">
+    import { checkAuth } from '/static/js/authCheck.js';
+    checkAuth();
+  </script>
+
+  <!-- Menú desplegable (mismo que inicio) -->
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <nav class="sidebar-menu" id="sidebarMenu">
+    <div class="menu-content">
+      <div class="menu-header">
+        <h3>Menú</h3>
+        <button class="close-menu" id="closeMenu">&times;</button>
+      </div>
+      <ul class="menu-list">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/#subirCarta">Subir Carta</a></li>
+        <li><a href="/#exposition">Ejemplos</a></li>
+        <li><a href="/mis_cartas">Mis Cartas</a></li>
+        <li><a href="/logout">Cerrar Sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="header-content">
+      <div class="menu">
+        <h1>Menu Digital Pro</h1>
+      </div>
+      <div class="descripcion">
+        <h2>Mis Cartas Generadas</h2>
+      </div>
+      <div class="descripcion2">
+        <h3>Aquí aparecen las cartas que has generado y guardado.</h3>
+      </div>
+    </div>
+
+    <div class="contenedor-cartas">
+      <div id="mensaje-feedback" class="mensaje-feedback" aria-live="polite"></div>
+      <div id="lista-cartas">
+        <p>Cargando tus cartas...</p>
+      </div>
+      <a href="/" class="btn-volver">← Volver al inicio</a>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/inicio.js') }}"></script>
+  <script type="module">
+    import { supabase } from '/static/js/supabaseClient.js';
+
+    async function cargarMisCartas() {
+      const { data: { user } } = await supabase.auth.getUser();
+      const contenedorLista = document.getElementById('lista-cartas');
+
+      if (!user) {
+        contenedorLista.innerHTML = "<p class='mensaje-estado'>⚠️ Debes iniciar sesión para ver tus cartas guardadas.</p>";
+        return;
+      }
+
+      const { data: cartas, error } = await supabase
+        .from('cartas')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error("Error cargando cartas:", error);
+        contenedorLista.innerHTML = "<p class='mensaje-estado'>❌ Hubo un error al cargar tus cartas.</p>";
+        return;
+      }
+
+      if (cartas.length === 0) {
+        contenedorLista.innerHTML = "<p class='mensaje-estado'>Aún no has generado ninguna carta. ¡Sube un Excel desde Inicio para empezar!</p>";
+        return;
+      }
+
+      const userId = user.id;
+      let htmlContent = "";
+      cartas.forEach(carta => {
+        const fecha = new Date(carta.created_at).toLocaleDateString();
+        const cartaId = typeof carta.id === 'string' ? carta.id : carta.id;
+        const activa = carta.activa === true;
+
+        htmlContent += `
+              ${activa ? ' <div class="carta-item" data-carta-id="${cartaId}" style="border-left: 4px solid #7acc7a; background: rgba(40, 120, 60, 0.25);">' : '<div class="carta-item" data-carta-id="${cartaId}">'}
+            <div class="carta-info">
+              <h3>🍽️ ${escapeHtml(carta.nombre_restaurante)}</h3>
+              <p><strong>Plantilla:</strong> ${escapeHtml(carta.color_plantilla)} | <strong>Creada:</strong> ${fecha}</p>
+            </div>
+            <div class="carta-acciones">
+              <a href="/output/${escapeHtml(carta.archivo_html)}" target="_blank" class="btn-mini btn-ver">Ver Carta</a>
+              <a href="/static/QRs/qr_${userId}.png" target="_blank" class="btn-mini btn-qr" title="Ver código QR">Mostrar QR</a>
+              ${activa ? '<span class="btn-mini estado-activa-inline" >✅ Activado</span>' : `<button type="button" class="btn-mini btn-activar" data-carta-id="${cartaId}" data-user-id="${userId}">Activar Carta</button>`}
+              <button type="button" class="btn-mini btn-borrar" data-carta-id="${cartaId}" data-nombre="${escapeHtml(carta.nombre_restaurante)}" title="Eliminar">Borrar Carta</button>
+            </div>
+          </div>
+        `;
+      });
+      contenedorLista.innerHTML = htmlContent;
+
+      // Mostrar mensaje al hacer clic en "Hacer visible en el QR"
+      contenedorLista.querySelectorAll('.btn-activar').forEach(btn => {
+        btn.addEventListener('click', () => activarCarta(btn.dataset.cartaId, btn.dataset.userId));
+      });
+      contenedorLista.querySelectorAll('.btn-borrar').forEach(btn => {
+        btn.addEventListener('click', () => borrarCarta(btn.dataset.cartaId, btn.dataset.nombre));
+      });
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function mostrarMensaje(texto, tipo) {
+      const el = document.getElementById('mensaje-feedback');
+      if (!el) return;
+      el.textContent = texto;
+      el.className = 'mensaje-feedback mensaje-feedback--' + (tipo || 'info');
+      el.style.display = 'block';
+    }
+
+    function ocultarMensaje() {
+      const el = document.getElementById('mensaje-feedback');
+      if (el) el.style.display = 'none';
+    }
+
+    cargarMisCartas();
+
+
+
+    window.activarCarta = async function(cartaId, userId) {
+      mostrarMensaje('Activando...', 'info');
+      try {
+        const res = await fetch('/api/activar-carta', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id: userId, carta_id: cartaId })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || 'Error al activar');
+        mostrarMensaje('Carta activada', 'ok');
+        setTimeout(() => { ocultarMensaje(); window.location.reload(); }, 1500);
+      } catch (error) {
+        console.error('Error al activar la carta:', error);
+        mostrarMensaje(error.message || 'Error al activar la carta. Revisa la consola del servidor.', 'error');
+      }
+    };
+
+    window.borrarCarta = async function(cartaId, nombreCarta) {
+      const nombre = nombreCarta || 'esta carta';
+      if (!confirm('¿Borrar la carta “‘ + nombre +’”?\nSe quitará de la lista y ya no podrás recuperarla.')) return;
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        mostrarMensaje('Sesión no válida.', 'error');
+        return;
+      }
+      mostrarMensaje('Eliminando...', 'info');
+      try {
+        const res = await fetch('/api/borrar-carta', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id: user.id, carta_id: cartaId })
+        });
+        const dataRes = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(dataRes.error || 'Error al borrar');
+        mostrarMensaje('Carta eliminada', 'ok');
+        const sel = '.carta-item[data-carta-id="' + String(cartaId).replace(/"/g, '\\"') + '"]';
+        document.querySelector(sel)?.remove();
+        setTimeout(ocultarMensaje, 2000);
+      } catch (error) {
+        console.error('Error al borrar la carta:', error);
+        mostrarMensaje(error.message || 'No se pudo borrar la carta.', 'error');
+      }
+    };
+
+  </script>
+</body>
+</html>

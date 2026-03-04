@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+
+<body>
+<!--    <div class="video-background">
+            <div data-us-project="uUYEVmGrqofwEJaXGwnc" style="width: 100vw; height: 100vh;"></div>  
+        </div>
+
+    <script type="text/javascript">!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.36/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();</script>
+
+-->
+    <div class="menu">
+        <h1>Menu Digital Pro</h1>
+        <p>Inicio De Sesión</p>
+    </div>
+
+            <form class="form" id="loginForm">
+                <p>Inicio de Sesión</p>
+                <input id="email" placeholder="Enter your email" class="input" type="email" required>
+                <input id="password" placeholder="*********" class="input" type="password" required>
+                <button type="submit">Iniciar Sesion</button>
+                <button type="button" class="register"><a href="register">Registrarse</a></button>
+
+            </form>
+
+            <script type="module">
+                import { supabase } from '/static/js/supabaseClient.js';
+                
+                const loginForm = document.getElementById('loginForm');
+                loginForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+            
+                    const { data, error } = await supabase.auth.signInWithPassword({
+                        email,
+                        password,
+                    });
+            
+                    if (error) {
+                        alert("Error: " + error.message);
+                    } else {
+                        alert("¡Bienvenido!");
+                        window.location.href = "/"; // Redirigir al inicio tras el login
+                    }
+                });
+            </script>
+</body>
+</html>

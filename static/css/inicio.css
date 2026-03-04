@@ -1,0 +1,629 @@
+
+body{
+    margin: 0;
+    /* padding-top: 2vh; NO NECESARIO si .header-content lo tiene */
+    font-family: 'Montserrat', sans-serif;
+    color: #f5f5f5;
+    line-height: 1.6;
+    text-align: center;
+    position: relative;
+    /* ¡IMPORTANTE! Hemos eliminado los fondos y degradados de aquí */
+    background-color: #000;
+    background-size: auto;          
+    background-position: center;     
+    background-repeat: no-repeat;  
+    background-attachment: fixed;
+    background-image: url("/static/media/untitled_project_remix (1).png");
+
+
+    
+
+}
+
+/* Overlay oscuro adicional para mayor contraste */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+    pointer-events: none;
+}
+
+    
+
+    
+    
+
+    
+.header-content { 
+    padding: 0 20px 4vh; 
+    width: auto; 
+    margin: 0 auto; 
+    text-shadow: 0 0 4px #000;
+    /*position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(28, 28, 28);
+    */
+
+}
+.menu h1 { 
+    font-family: 'Playfair Display', serif; 
+    color: #b8860b; 
+    font-size: 7vh; 
+    font-weight: 700; 
+    margin-bottom: 0.5vh; 
+    text-shadow: 0 0 8px rgba(184, 135, 11, 0.581); 
+    padding-bottom: 3vh;
+}
+.descripcion h2 { 
+    color: #f5f5f5; 
+    font-size: 3vh; 
+    font-weight: 400; 
+    margin-top: 1vh; 
+}   
+.descripcion2 h3 { 
+    color: #aaaaaa; 
+    font-size: 2vh; 
+    font-weight: 300; 
+    margin: 1vh auto 0; 
+    max-width: 700px; 
+    text-shadow: 0px 0px 20px #000000;
+}
+
+.subirCarta { 
+    margin: auto;
+    padding: 30px; 
+    background-color: #2a2a2a53; 
+    backdrop-filter: blur(10px);
+    border-radius: 6px; 
+    max-width: 650px; 
+    
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 1); 
+    text-shadow: 0 0 4px #000;
+    border-left: 5px solid #b8860b; 
+    transition: all 0.5s ease;
+}
+.subirCarta:hover{
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .6); 
+    transition: all 0.5s ease;
+    transform: scale(1.01); 
+}
+.subirCarta h3 { 
+    margin-top: 0; 
+    margin-bottom: 3vh; 
+    font-size: 2.5vh; 
+    color: #f5f5f5; 
+}
+.instrucciones-clave {
+    font-size: 1.8vh;
+    font-weight: 400;
+    color: #fff; /* Asegura que el texto clave destaque */
+    margin-bottom: 2vh;
+    padding: 10px;
+    border: 1px dashed #b8870b3b;
+    border-radius: 5px;
+
+    transition: 0.6s;
+
+}
+.instrucciones-clave:hover {
+    border: 1px dashed #b8870bb0;
+    transition: 0.6s;
+}
+
+
+/* From Uiverse.io by andrew-demchenk0 */ 
+.button_1 {
+    --main-focus: #2d8cf0;
+    --font-color: #dedede;
+    --bg-color-sub: #222;
+    --bg-color: #323232;
+    --main-color: #dedede;
+    position: relative;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+    margin:3vh 32vh;
+    text-decoration: none;
+
+}
+.button_1, .button__icon, .button__text {
+    transition: all 0.3s;
+}
+.button_1 .button__text {
+    transform: translateX(21px);
+    color: var(--font-color);
+    font-weight: 600;
+}
+.button_1 .button__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: var(--bg-color-sub);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button_1 .svg {
+    width: 20px;
+    fill: var(--main-color);
+}
+.button_1:hover {
+    background: var(--bg-color);
+}
+.button_1:hover .button__text {
+    color: transparent;
+}
+.button_1:hover .button__icon {
+    width: 148px;
+    transform: translateX(0);
+}
+.button_1:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px var(--main-color);
+}
+
+form label { 
+    color: #aaaaaa; 
+    font-size: 1.8vh; 
+    display: block; 
+    margin-bottom: 10px; 
+    font-weight: 300; 
+}
+input[type="file"] { 
+    display: block; 
+    margin: 10px auto 20px; 
+    padding: 12px 15px; 
+    border: 1px solid #444; 
+    border-radius: 4px; 
+    background: #3a3a3a80; 
+    color: #f5f5f5; 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: border-color .3s, background-color .3s; 
+    width: 80%; 
+    max-width: 400px; 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none; 
+}
+/* Y también quita el 'select:hover' */
+input[type="file"]:hover { 
+    border-color: #b8860b; 
+    background-color: #303030; 
+}
+input[type="file"]::file-selector-button { 
+    display: none; 
+}
+
+/* --- Estilos para el nuevo Selector de Color --- */
+.color-selector-container {
+    display: flex;
+    justify-content: center; /* Centrar el grupo de botones dentro del formulario */
+
+    margin-left:0 ;
+    /*PARA MOVIL*/
+    /*margin-left:-4vh ;*/
+    width: 100%;
+    height: 7vh;
+    
+}
+/* El estilo de los radio buttons se pega tal cual, pero adaptamos el 'glider' */
+.glass-radio-group {
+    --bg: rgba(255, 255, 255, 0.06);
+    --text: #e5e5e5;
+
+    display: flex;
+    position: relative;
+    background: var(--bg);
+    border-radius: 1rem;
+    backdrop-filter: blur(12px);
+    box-shadow:
+        inset 1px 1px 4px rgba(255, 255, 255, 0.2),
+        inset -1px -1px 6px rgba(0, 0, 0, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    width: 100%; /* Ajustado para llenar el contenedor */
+    
+}
+.glass-radio-group input {
+    display: none;
+}
+.glass-radio-group label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    font-size: 14px;
+    padding: 0.8rem 0.5rem; /* Ajuste para que quepan 4 etiquetas */
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: var(--text);
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease-in-out;
+    text-align: center;
+}
+.glass-radio-group label:hover {
+    color: white;
+}
+.glass-radio-group input:checked + label {
+    color: #fff;
+}
+.glass-glider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: calc(100% / 4); /* Ajustado para 4 opciones */
+    border-radius: 1rem;
+    z-index: 1;
+    transition:
+        transform 0.5s cubic-bezier(0.37, 1.95, 0.66, 0.56),
+        background 0.4s ease-in-out,
+        box-shadow 0.4s ease-in-out;
+}
+/* Azul Moderno (posición 0%) */
+#glass-blue:checked ~ .glass-glider {
+    transform: translateX(0%);
+    /* Color de tu plantilla 'blue' (ejemplo) */
+    background: linear-gradient(135deg, #0f202799, #468095); 
+    box-shadow:
+        0 0 18px rgba(70, 128, 149, 0.5),
+        0 0 10px rgba(150, 200, 220, 0.4) inset;
+}
+/* Clásico (Marrón y Blanco) (posición 100%) */
+#glass-brown:checked ~ .glass-glider {
+    transform: translateX(100%);
+    /* Color de tu plantilla 'brown_white' (ejemplo) */
+    background: linear-gradient(135deg, #2e292b99, #bf9154); 
+    box-shadow:
+        0 0 18px rgba(191, 145, 84, 0.5),
+        0 0 10px rgba(220, 180, 120, 0.4) inset;
+}
+/* Fresco (Verde y Crema) (posición 200%) */
+#glass-green:checked ~ .glass-glider {
+    transform: translateX(200%);
+    /* Color de tu plantilla 'green' (ejemplo) */
+    background: linear-gradient(135deg, #394d4d99, #59b096); 
+    box-shadow:
+        0 0 18px rgba(89, 176, 150, 0.5),
+        0 0 10px rgba(120, 200, 170, 0.4) inset;
+}
+/* Minimalista (Blanco y Azul) (posición 300%) */
+#glass-white-blue:checked ~ .glass-glider {
+    transform: translateX(300%);
+    /* Color de tu plantilla 'white_blue' (ejemplo) */
+    background: linear-gradient(135deg, #21616399, #cfffff); 
+    box-shadow:
+        0 0 18px rgba(207, 255, 255, 0.5),
+        0 0 10px rgba(230, 255, 255, 0.4) inset;
+}
+
+button { 
+    margin-top: 4vh; 
+    padding: 1.2em 3em; 
+    font-size: 16px; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-weight: 600; 
+    color: #1c1c1c; 
+    background-color: #b8860b; 
+    border: none; 
+    border-radius: 50px; 
+    box-shadow: 0 8px 20px rgba(184, 134, 11, .4); 
+    transition: all .3s ease; 
+    cursor: pointer; 
+    outline: none; 
+}
+button:hover { 
+    background-color: #ffd700; 
+    box-shadow: 0 12px 25px rgba(255, 215, 0, .6); 
+    transform: translateY(-3px); 
+}
+button:active { 
+    transform: translateY(0); 
+}
+
+.exposition {
+    margin-top: 10vh;
+    text-shadow: 0 0 2px #000;
+    
+}
+
+.expo_descrip {
+    
+    width: 60vh;
+    border-bottom: 1px solid #b8860b;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.expo_descrip p {
+    text-shadow: 0 0 16px #fff3a1;
+    color: #f5f5f5;
+    font-size: 3vh;
+    font-weight: 400;
+}
+.containerCard { 
+    display: flex; 
+    justify-content: center; 
+    align-items: stretch; 
+    gap: 3rem; 
+    padding: 5rem 1rem; 
+    flex-wrap: wrap; 
+}
+.card { 
+    width: 430px; 
+    height: 702px;
+    background: #444; 
+    border-radius: 6px; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .7); 
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; 
+    overflow: hidden; 
+    border: 2px solid rgba(255, 255, 255, .1); 
+    position: relative; 
+}
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    z-index: 2;
+}
+.card:hover { 
+    transform: translateY(-2px) scale(1.01); 
+    box-shadow:  inset 0 0 20px rgba(0, 0, 0, .9); 
+    border-color: #b8860b; 
+}
+iframe { 
+    width: 100%; 
+    height: 100%; 
+    border-radius: 0 0 6px 6px; 
+    border: none; 
+}
+@media (max-width: 1024px) { 
+    .containerCard { 
+        gap: 2rem;
+    } 
+    .card { 
+        width: 40%; 
+        height: 400px;
+    } 
+}
+@media (max-width: 768px) { 
+    .card { 
+        width: 90%; 
+        max-width: 350px; 
+        margin: 15px auto;
+    } 
+    .containerCard { 
+        padding: 3rem 0;
+    } 
+    .menu h1 { 
+        font-size: 4.5vh;
+    } 
+}
+
+/* Estilos del menú desplegable */
+.menu-toggle {
+    position: fixed;
+    top: 30px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    z-index: 1000;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(34, 34, 34, 0.9);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.menu-toggle:hover {
+    background-color: rgba(184, 134, 11, 0.2);
+    box-shadow: 0 4px 20px rgba(184, 134, 11, 0.4);
+    transform: scale(1.05);
+}
+
+.menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background-color: #b8860b;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px rgba(184, 135, 11, 0.5);
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+.sidebar-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100vh;
+    z-index: 999;
+    transition: left 0.3s ease;
+}
+
+.sidebar-menu.active {
+    left: 0;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 998;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(34, 34, 34, 0.98), rgba(42, 42, 42, 0.98));
+    backdrop-filter: blur(20px);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.8);
+    padding: 0;
+    overflow-y: auto;
+    z-index: 999;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 20px;
+    border-bottom: 2px solid rgba(184, 134, 11, 0.3);
+    background-color: rgba(184, 134, 11, 0.1);
+}
+
+.menu-header h3 {
+    font-family: 'Playfair Display', serif;
+    color: #b8860b;
+    font-size: 24px;
+    margin: 0;
+    text-shadow: 0 0 8px rgba(184, 135, 11, 0.5);
+}
+
+.close-menu {
+    background: none;
+    border: none;
+    color: #b8860b;
+    font-size: 36px;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.close-menu:hover {
+    background-color: rgba(184, 134, 11, 0.2);
+    transform: rotate(90deg);
+    box-shadow: 0 0 10px rgba(184, 135, 11, 0.5);
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-list li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-list li:last-child {
+    border-bottom: none;
+}
+
+.menu-list a {
+    display: block;
+    padding: 20px 25px;
+    color: #f5f5f5;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-list a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #b8860b;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.menu-list a:hover {
+    background-color: rgba(184, 134, 11, 0.15);
+    color: #b8860b;
+    padding-left: 35px;
+    text-shadow: 0 0 8px rgba(184, 135, 11, 0.5);
+}
+
+.menu-list a:hover::before {
+    transform: scaleY(1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu-toggle {
+        top: 15px;
+        left: 15px;
+        width: 45px;
+        height: 45px;
+    }
+
+    .sidebar-menu {
+        width: 280px;
+    }
+
+    .menu-header h3 {
+        font-size: 20px;
+    }
+
+    .menu-list a {
+        font-size: 16px;
+        padding: 18px 20px;
+    }
+}

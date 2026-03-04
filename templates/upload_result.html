@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page_title }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}" />
+</head>
+<body>
+  <main class="upload-wrap">
+    <h1 class="upload-title">{{ heading }}</h1>
+
+    {% if subtitle_lines %}
+      <p class="upload-subtitle">
+        {% for line in subtitle_lines %}
+          {{ line }}{% if not loop.last %}<br />{% endif %}
+        {% endfor %}
+      </p>
+    {% endif %}
+
+    {% if qr_path %}
+      <img class="qr" src="{{ qr_path }}" alt="Código QR de la carta" />
+      <p class="upload-note">{{ qr_note or "Escanea el QR o abre la carta directamente." }}</p>
+    {% endif %}
+
+    {% if detail %}
+      <p class="upload-note">{{ detail }}</p>
+    {% endif %}
+
+    <div class="upload-actions">
+      <a class="upload-cta" href="{{ cta_href }}">{{ cta_label }}</a>
+    </div>
+  </main>
+
+  <script type="module">
+    // Importamos la conexión a Supabase
+    import { supabase } from '/static/js/supabaseClient.js';
+
+    async function guardarCartaEnBD() {
+        // 1. Recogemos los datos que nos pasó Flask en el Paso 3 usando las llaves de Jinja2
+        const archivoGenerado = "{{ archivo_generado }}";
+        const nombreRestaurante = "{{ nombre_restaurante }}";
+        const colorPlantilla = "{{ color_plantilla }}";
+
+        // Si no hay archivo (por ejemplo, si hubo un error), paramos aquí
+        if (!archivoGenerado || archivoGenerado === "None" || archivoGenerado === "") {
+            return;
+        }
+
+        // 2. Comprobamos si hay un usuario logueado actualmente
+        const { data: { user } } = await supabase.auth.getUser();
+
+        if (user) {
+            console.log("Usuario logueado detectado:", user.id);
+            console.log("Guardando la carta en la base de datos...");
+            
+            // 3. Insertamos el registro en la tabla 'cartas' que creamos en el Paso 1
+            const { data, error } = await supabase
+                .from('cartas')
+                .insert([
+                    { 
+                        user_id: user.id, 
+                        nombre_restaurante: nombreRestaurante, 
+                        archivo_html: archivoGenerado,
+                        color_plantilla: colorPlantilla
+                    }
+                ]);
+
+            if (error) {
+                console.error("❌ Error guardando la carta en Supabase:", error);
+            } else {
+                console.log("✅ Carta guardada en 'Mis Cartas' exitosamente.");
+            }
+        } else {
+            console.log("⚠️ No hay sesión iniciada. La carta se generó pero no se guardará en ninguna cuenta.");
+        }
+    }
+
+    // Ejecutamos la función automáticamente al cargar esta pantalla
+    guardarCartaEnBD();
+</script>
+</body>
+</html>
+
