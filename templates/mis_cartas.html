@@ -97,7 +97,7 @@
         const activa = carta.activa === true;
 
         htmlContent += `
-              ${activa ? ' <div class="carta-item" data-carta-id="${cartaId}" style="border-left: 4px solid #7acc7a; background: rgba(40, 120, 60, 0.25);">' : '<div class="carta-item" data-carta-id="${cartaId}">'}
+        <div class="carta-item" data-carta-id="${cartaId}" ${activa ? 'style="border-left: 4px solid #7acc7a; background: rgba(40, 120, 60, 0.25);"' : ''}>
             <div class="carta-info">
               <h3>🍽️ ${escapeHtml(carta.nombre_restaurante)}</h3>
               <p><strong>Plantilla:</strong> ${escapeHtml(carta.color_plantilla)} | <strong>Creada:</strong> ${fecha}</p>
