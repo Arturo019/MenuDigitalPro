@@ -5,6 +5,8 @@ Usado por la app Flask (scripts) y por el generador de cartas (src/generator).
 import os
 from dotenv import load_dotenv
 
+load_dotenv()
+
 # Raíz del proyecto (carpeta donde está config.py)
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
