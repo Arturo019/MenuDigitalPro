@@ -92,12 +92,14 @@ def api_activar_carta():
     carta_id = data.get("carta_id")
     if not user_id or carta_id is None:
         return jsonify({"ok": False, "error": "Faltan user_id o carta_id"}), 400
-    client = supabase_admin if supabase_admin else supabase
+    if not supabase_admin:
+        return jsonify({
+            "ok": False,
+            "error": "Activar no disponible: configura SUPABASE_SERVICE_ROLE_KEY en Render (Supabase → Project Settings → API → service_role)."
+        }), 503
     try:
-        # 1) Desactivar todas las cartas de este usuario
-        client.table("cartas").update({"activa": False}).eq("user_id", user_id).execute()
-        # 2) Activar solo esta carta (y que sea del usuario para no tocar otras)
-        r = client.table("cartas").update({"activa": True}).eq("id", carta_id).eq("user_id", user_id).execute()
+        supabase_admin.table("cartas").update({"activa": False}).eq("user_id", user_id).execute()
+        r = supabase_admin.table("cartas").update({"activa": True}).eq("id", carta_id).eq("user_id", user_id).execute()
         if not r.data:
             return jsonify({"ok": False, "error": "Carta no encontrada o no es tuya"}), 404
         return jsonify({"ok": True})
@@ -114,9 +116,13 @@ def api_borrar_carta():
     carta_id = data.get("carta_id")
     if not user_id or carta_id is None:
         return jsonify({"ok": False, "error": "Faltan user_id o carta_id"}), 400
-    client = supabase_admin if supabase_admin else supabase
+    if not supabase_admin:
+        return jsonify({
+            "ok": False,
+            "error": "Borrar no disponible: configura SUPABASE_SERVICE_ROLE_KEY en Render (Supabase → Project Settings → API → service_role)."
+        }), 503
     try:
-        r = client.table("cartas").delete().eq("id", carta_id).eq("user_id", user_id).execute()
+        supabase_admin.table("cartas").delete().eq("id", carta_id).eq("user_id", user_id).execute()
         return jsonify({"ok": True})
     except Exception as e:
         print(f"Error API borrar-carta: {e}")
