@@ -68,20 +68,19 @@ def generar_carta_excel(ruta_excel, template_color="blue"):
         # 4.1 - Inicializar el HTML de los iconos
         alergeno_html = "" 
         
-        # 4.2 - Obtener los alérgenos del plato de forma segura y en minúsculas
-        alergenos_del_plato = str(row['Alergenos']).lower()
-        
-        # 4.3 - Iterar sobre el diccionario de los 14 alérgenos
+        # 4.2 - Obtener los alérgenos del plato y lista normalizada para el filtrado (coincide con value de los checkbox)
+        texto_alergenos = str(row['Alergenos']).lower()
+        alergenos_encontrados = []
         for palabra_clave, nombre_imagen in ALERGENO_MAPEO.items():
-            
-            # Buscamos la palabra clave del diccionario (en minúsculas) en el texto del Excel
-            if palabra_clave.lower() in alergenos_del_plato:
-                # Si se encuentra, añade la etiqueta <img> con la imagen y la ruta parcial
+            if palabra_clave.lower() in texto_alergenos:
                 ruta_completa_icono = f"{BASE_ICON_PATH}{nombre_imagen}"
                 alergeno_html += f'<img src="{ruta_completa_icono}" alt="{palabra_clave}" class="icono-alergeno">'
-        
+                # Guardamos la clave en minúsculas para que coincida con value del checkbox (ej: "frutos secos")
+                alergenos_encontrados.append(palabra_clave.lower())
+        data_alergenos_val = ",".join(alergenos_encontrados)
+
         plato_html = f'''
-        <div class="plato destacado" data-alergenos="{alergenos_del_plato}">
+        <div class="plato destacado" data-alergenos="{data_alergenos_val}">
             <div class="titulo">{row['Nombre del plato']}</div>
             <div class="precio">{row['Precio']} €</div>
             <div class="descripcion">{row['Ingredientes/Descripción']}</div>

@@ -113,6 +113,19 @@ body::before {
   transform: translateY(0);
 }
 
+.upload-cta--secondary {
+  background-color: transparent;
+  color: var(--gold);
+  border: 2px solid var(--gold);
+  box-shadow: none;
+}
+
+.upload-cta--secondary:hover {
+  background-color: rgba(184, 135, 11, 0.15);
+  color: #ffd700;
+  border-color: #ffd700;
+}
+
 .upload-note {
   margin: 0;
   font-size: 0.9rem;

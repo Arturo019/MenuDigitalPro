@@ -29,57 +29,12 @@
     {% endif %}
 
     <div class="upload-actions">
+      {% if qr_path %}
+        <a class="upload-cta upload-cta--secondary" href="{{ qr_path }}" download="codigo_qr_carta.png">Descargar QR</a>
+      {% endif %}
       <a class="upload-cta" href="{{ cta_href }}">{{ cta_label }}</a>
     </div>
   </main>
-
-  <script type="module">
-    // Importamos la conexión a Supabase
-    import { supabase } from '/static/js/supabaseClient.js';
-
-    async function guardarCartaEnBD() {
-        // 1. Recogemos los datos que nos pasó Flask en el Paso 3 usando las llaves de Jinja2
-        const archivoGenerado = "{{ archivo_generado }}";
-        const nombreRestaurante = "{{ nombre_restaurante }}";
-        const colorPlantilla = "{{ color_plantilla }}";
-
-        // Si no hay archivo (por ejemplo, si hubo un error), paramos aquí
-        if (!archivoGenerado || archivoGenerado === "None" || archivoGenerado === "") {
-            return;
-        }
-
-        // 2. Comprobamos si hay un usuario logueado actualmente
-        const { data: { user } } = await supabase.auth.getUser();
-
-        if (user) {
-            console.log("Usuario logueado detectado:", user.id);
-            console.log("Guardando la carta en la base de datos...");
-            
-            // 3. Insertamos el registro en la tabla 'cartas' que creamos en el Paso 1
-            const { data, error } = await supabase
-                .from('cartas')
-                .insert([
-                    { 
-                        user_id: user.id, 
-                        nombre_restaurante: nombreRestaurante, 
-                        archivo_html: archivoGenerado,
-                        color_plantilla: colorPlantilla
-                    }
-                ]);
-
-            if (error) {
-                console.error("❌ Error guardando la carta en Supabase:", error);
-            } else {
-                console.log("✅ Carta guardada en 'Mis Cartas' exitosamente.");
-            }
-        } else {
-            console.log("⚠️ No hay sesión iniciada. La carta se generó pero no se guardará en ninguna cuenta.");
-        }
-    }
-
-    // Ejecutamos la función automáticamente al cargar esta pantalla
-    guardarCartaEnBD();
-</script>
 </body>
 </html>
 

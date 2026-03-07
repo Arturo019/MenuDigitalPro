@@ -33,7 +33,7 @@
         <li><a href="/#subirCarta">Subir Carta</a></li>
         <li><a href="/#exposition">Ejemplos</a></li>
         <li><a href="/mis_cartas">Mis Cartas</a></li>
-        <li><a href="/logout">Cerrar Sesión</a></li>
+        <li><a href="/logout" id="menuAuthLink">Cerrar Sesión</a></li>
       </ul>
     </div>
   </nav>
@@ -105,6 +105,7 @@
             <div class="carta-acciones">
               <a href="/output/${escapeHtml(carta.archivo_html)}" target="_blank" class="btn-mini btn-ver">Ver Carta</a>
               <a href="/static/QRs/qr_${userId}.png" target="_blank" class="btn-mini btn-qr" title="Ver código QR">Mostrar QR</a>
+              <a href="/static/QRs/qr_${userId}.png" download="codigo_qr_carta.png" class="btn-mini btn-qr-download" title="Descargar imagen del QR">Descargar QR</a>
               ${activa ? '<span class="btn-mini estado-activa-inline" >✅ Activado</span>' : `<button type="button" class="btn-mini btn-activar" data-carta-id="${cartaId}" data-user-id="${userId}">Activar Carta</button>`}
               <button type="button" class="btn-mini btn-borrar" data-carta-id="${cartaId}" data-nombre="${escapeHtml(carta.nombre_restaurante)}" title="Eliminar">Borrar Carta</button>
             </div>

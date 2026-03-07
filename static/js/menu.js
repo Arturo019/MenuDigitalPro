@@ -5,10 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function filtrarPlatos() {
     const alergiasSeleccionadas = Array.from(checkboxes)
       .filter(cb => cb.checked)
-      .map(cb => cb.value);
+      .map(cb => cb.value.trim().toLowerCase());
     
     platos.forEach(plato => {
-      const alergenos = (plato.dataset.alergenos || '').split(/\s+/);
+      const raw = (plato.dataset.alergenos || '').trim().toLowerCase();
+      const alergenos = raw
+        ? (raw.includes(',') ? raw.split(',') : raw.split(/\s+/))
+            .map(s => s.trim()).filter(Boolean)
+        : [];
       if (alergiasSeleccionadas.some(alergia => alergenos.includes(alergia))) {
         plato.classList.add('oculto');
       } else {

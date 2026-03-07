@@ -46,7 +46,7 @@ Luego abrir `http://127.0.0.1:5000/`.
 - **`scripts/import_excel.py`** – Definición de la app y todas las rutas.
 - **`src/generator/generate.py`** – `generar_carta_excel()`, `generar_qr()`.
 - **`static/js/supabaseClient.js`** – Cliente Supabase (auth y BD).
-- **`static/js/authCheck.js`** – Comprueba sesión y redirige a /login si no hay usuario (usado en inicio y mis_cartas).
+- **`static/js/authCheck.js`** – Comprueba sesión y redirige a /login si no hay usuario (usado en mis_cartas; inicio permite ver sin sesión).
 - **`static/js/inicio.js`** – Menú hamburguesa (inicio y mis_cartas).
 - **`static/js/menu.js`** – Lógica del menú de alergias en las cartas generadas.
 

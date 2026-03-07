@@ -51,7 +51,6 @@ qr_url = generar_qr("http://127.0.0.1:5000/output/" + nombre_archivo)
 
 ## Notas
 
-- La autenticación es con Supabase en el cliente; `/logout` solo muestra la página de login (cerrar sesión se hace en el cliente).
+- La autenticación es con Supabase en el cliente; `/logout` carga una página que ejecuta signOut y redirige a login.
 - Si usas OneDrive, evita mover o renombrar carpetas durante la sincronización.
-- `static/css/boton.css` existe pero no está enlazado en ninguna plantilla; se puede usar o eliminar.
 
