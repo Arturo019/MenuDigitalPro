@@ -284,6 +284,24 @@ input[type="file"]::file-selector-button {
     color: #fff;
 }
 
+/* Contraste del texto según la opción seleccionada (fondo claro = texto oscuro) */
+#glass-blue:checked + label {
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+#glass-brown:checked + label {
+    color: #292928;
+    text-shadow: 0 0 1px rgba(255, 254, 243, 0.5);
+}
+#glass-green:checked + label {
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+#glass-white-blue:checked + label {
+    color: #103f04;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
+}
+
 .glass-glider {
     position: absolute;
     top: 0;
@@ -298,41 +316,37 @@ input[type="file"]::file-selector-button {
         box-shadow 0.4s ease-in-out;
     box-sizing: border-box;
 }
-/* Azul Moderno (posición 0%) */
+/* Azul Moderno: igual que plantilla menu_blue (fondo #004650, tonos azul/teal) */
 #glass-blue:checked ~ .glass-glider {
     transform: translateX(0%);
-    /* Color de tu plantilla 'blue' (ejemplo) */
-    background: linear-gradient(135deg, #0f202799, #468095); 
+    background: linear-gradient(135deg, #004650, #2d6b73);
     box-shadow:
-        0 0 18px rgba(70, 128, 149, 0.5),
-        0 0 10px rgba(150, 200, 220, 0.4) inset;
+        0 0 18px rgba(0, 70, 80, 0.5),
+        0 0 10px rgba(165, 212, 219, 0.25) inset;
 }
-/* Clásico (Marrón y Blanco) (posición 100%) */
+/* Clásico: igual que plantilla menu_brown_white (crema #fffef3 y marrón oscuro #292928) */
 #glass-brown:checked ~ .glass-glider {
     transform: translateX(100%);
-    /* Color de tu plantilla 'brown_white' (ejemplo) */
-    background: linear-gradient(135deg, #2e292b99, #bf9154); 
+    background: linear-gradient(135deg, #fffef3, #5c5346);
     box-shadow:
-        0 0 18px rgba(191, 145, 84, 0.5),
-        0 0 10px rgba(220, 180, 120, 0.4) inset;
+        0 0 18px rgba(41, 41, 40, 0.4),
+        0 0 10px rgba(255, 254, 243, 0.3) inset;
 }
-/* Fresco (Verde y Crema) (posición 200%) */
+/* Fresco: igual que plantilla menu_green (verde oscuro #313b2f y acento dorado #eda200) */
 #glass-green:checked ~ .glass-glider {
     transform: translateX(200%);
-    /* Color de tu plantilla 'green' (ejemplo) */
-    background: linear-gradient(135deg, #394d4d99, #59b096); 
+    background: linear-gradient(135deg, #313b2f, #5a7248);
     box-shadow:
-        0 0 18px rgba(89, 176, 150, 0.5),
-        0 0 10px rgba(120, 200, 170, 0.4) inset;
+        0 0 18px rgba(237, 162, 0, 0.4),
+        0 0 10px rgba(237, 162, 0, 0.15) inset;
 }
-/* Minimalista (Blanco y Azul) (posición 300%) */
+/* Minimalista: igual que plantilla menu_white_blue (verde salvia #a4bf9d y verde oscuro #103f04) */
 #glass-white-blue:checked ~ .glass-glider {
     transform: translateX(300%);
-    /* Color de tu plantilla 'white_blue' (ejemplo) */
-    background: linear-gradient(135deg, #21616399, #cfffff); 
+    background: linear-gradient(135deg, #a4bf9d, #3d6b35);
     box-shadow:
-        0 0 18px rgba(207, 255, 255, 0.5),
-        0 0 10px rgba(230, 255, 255, 0.4) inset;
+        0 0 18px rgba(16, 63, 4, 0.35),
+        0 0 10px rgba(164, 191, 157, 0.3) inset;
 }
 
 button { 
